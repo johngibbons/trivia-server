@@ -4,9 +4,7 @@ import {
   addReferenceItem,
   removeItem,
   removeReferenceItem
-} from '../src/core';
-
-import {setGames} from '../src/core';
+} from '../src/reducers/core';
 
 describe('application logic', () => {
 
@@ -15,6 +13,7 @@ describe('application logic', () => {
     it('adds the item to new map if does not exist', () => {
       const state = {};
       const action = {
+        type: 'ADD_GAME',
         id: 1,
         name: "Some Game"
       };
@@ -40,6 +39,7 @@ describe('application logic', () => {
       };
 
       const action = {
+        type: 'ADD_GAME',
         id: 3,
         name: "Third Game",
         entries: [1,2,3]
@@ -89,6 +89,7 @@ describe('application logic', () => {
       };
 
       const action = {
+        type: 'ADD_ENTRY',
         id: 1,
         name: "First Entry",
         game: 0
@@ -122,6 +123,7 @@ describe('application logic', () => {
       }
 
       const action = {
+        type: 'ADD_ENTRY',
         id: 3,
         name: 'Third Entry',
         game: 0
@@ -157,6 +159,7 @@ describe('application logic', () => {
       };
 
       const action = {
+        type: 'REMOVE_GAME',
         id: 1
       };
 
@@ -191,6 +194,7 @@ describe('application logic', () => {
       };
 
       const action = {
+        type: 'REMOVE_GAME',
         id: 0
       };
 
@@ -212,6 +216,7 @@ describe('application logic', () => {
       }
 
       const action = {
+        type: 'REMOVE_ENTRY',
         id: 2,
         game: 0
       }
@@ -244,6 +249,7 @@ describe('application logic', () => {
       };
 
       const action = {
+        type: 'REMOVE_ENTRY',
         id: 1,
         game: 0
       };
