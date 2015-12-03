@@ -19,12 +19,6 @@ const gamesById = (state = {}, action) => {
     case 'REMOVE_ENTRY': {
       return removeReferenceItem(state, action, 'game', 'entries');
     }
-    case 'ADD_QUESTION': {
-      return addReferenceItem(state, action, 'game', 'questions');
-    }
-    case 'REMOVE_QUESTION': {
-      return removeReferenceItem(state, action, 'game', 'questions');
-    }
     default:
       return state;
   }

@@ -8,16 +8,16 @@ import {
 const entriesById = (state = {}, action) => {
   switch(action.type) {
     case 'ADD_ENTRY': {
-      addItem(state, action);
+      return addItem(state, action);
     }
     case 'REMOVE_ENTRY': {
-      removeItem(state, action);
+      return removeItem(state, action);
     }
     case 'ADD_QUESTION': {
-      addReferenceItem(state, action, 'entry', 'questions');
+      return addReferenceItem(state, action, 'entry', 'questions');
     }
     case 'REMOVE_QUESTION': {
-      removeReferenceItem(state, action, 'entry', 'questions');
+      return removeReferenceItem(state, action, 'entry', 'questions');
     }
     default:
       return state;
