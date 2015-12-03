@@ -2,7 +2,8 @@ import {
   addItem,
   removeItem,
   addReferenceItem,
-  removeReferenceItem
+  removeReferenceItem,
+  changeOrRemoveReferenceValue
 } from './core';
 
 const questionsById = (state = {}, action) => {
@@ -18,6 +19,9 @@ const questionsById = (state = {}, action) => {
     }
     case 'REMOVE_ANSWER': {
       return removeReferenceItem(state, action, 'question', 'answers');
+    }
+    case 'CHANGE_OR_REMOVE_ANSWER': {
+      return changeOrRemoveReferenceValue(state, action, 'question', 'selectedAnswer');
     }
     default:
       return state;

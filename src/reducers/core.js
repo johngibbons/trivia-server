@@ -31,3 +31,22 @@ export function removeReferenceItem(state, action, actionKey, referenceName) {
     }
   };
 }
+
+export function changeOrRemoveReferenceValue(
+  state,
+  action,
+  actionKey,
+  referenceName
+) {
+  if (state[action[actionKey]][referenceName] === action.id){
+    const stateCopy = JSON.parse(JSON.stringify(state));
+    delete stateCopy[action[actionKey]][referenceName];
+    return stateCopy;
+  }
+  return {...state,
+    [action[actionKey]]: {
+      ...state[action[actionKey]],
+      [referenceName]: action.id
+    }
+  };
+}

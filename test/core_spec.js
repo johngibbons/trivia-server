@@ -3,7 +3,8 @@ import {
   addItem,
   addReferenceItem,
   removeItem,
-  removeReferenceItem
+  removeReferenceItem,
+  changeOrRemoveReferenceValue
 } from '../src/reducers/core';
 
 describe('application logic', () => {
@@ -263,6 +264,98 @@ describe('application logic', () => {
       });
     });
 
+  });
+
+  describe('changeOrRemoveReferenceValue', () => {
+    it('adds reference value if does not exist', () => {
+      const state = {
+        0: {
+          id: 0
+        }
+      };
+
+      const action = {
+        type: 'CHANGE_OR_REMOVE_ANSWER',
+        id: 2,
+        question: 0
+      };
+
+      const nextState = changeOrRemoveReferenceValue(state, action, 'question', 'selectedAnswer');
+      expect(nextState).to.eql({
+        0: {
+          id: 0,
+          selectedAnswer: 2
+        }
+      });
+
+      expect(state).to.eql({
+        0: {
+          id: 0
+        }
+      });
+
+    });
+
+    it('changes reference value', () => {
+      const state = {
+        0: {
+          id: 0,
+          selectedAnswer: 4
+        }
+      };
+
+      const action = {
+        type: 'CHANGE_OR_REMOVE_ANSWER',
+        id: 2,
+        question: 0
+      };
+
+      const nextState = changeOrRemoveReferenceValue(state, action, 'question', 'selectedAnswer');
+      expect(nextState).to.eql({
+        0: {
+          id: 0,
+          selectedAnswer: 2
+        }
+      });
+
+      expect(state).to.eql({
+        0: {
+          id: 0,
+          selectedAnswer: 4
+        }
+      });
+
+    });
+
+    it('removes reference value if same as selected', () => {
+      const state = {
+        0: {
+          id: 0,
+          selectedAnswer: 4
+        }
+      };
+
+      const action = {
+        type: 'CHANGE_OR_REMOVE_ANSWER',
+        id: 4,
+        question: 0
+      };
+
+      const nextState = changeOrRemoveReferenceValue(state, action, 'question', 'selectedAnswer');
+      expect(nextState).to.eql({
+        0: {
+          id: 0
+        }
+      });
+
+      expect(state).to.eql({
+        0: {
+          id: 0,
+          selectedAnswer: 4
+        }
+      });
+
+    })
   });
 
 });
