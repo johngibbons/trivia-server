@@ -8,8 +8,11 @@ describe('games reducer', () => {
     const initialState = {};
     const action = {
       type: 'ADD_GAME',
-      id: 0,
-      title: 'Sample Game'
+      payload: {
+        id: 0,
+        title: 'Sample Game'
+      },
+      meta: {remote: true}
     };
 
     const nextState = gamesById(initialState, action);
@@ -30,7 +33,10 @@ describe('games reducer', () => {
     };
     const action = {
       type: 'REMOVE_GAME',
-      id: 0
+      payload: {
+        id: 0
+      },
+      meta: {remote: true}
     }
 
     const nextState = gamesById(initialState, action);
@@ -46,8 +52,11 @@ describe('games reducer', () => {
     };
     const action = {
       type: 'ADD_ENTRY',
-      id: 1,
-      game: 0
+      payload: {
+        id: 1,
+        game: 0
+      },
+      meta: {remote: true}
     };
 
     const nextState = gamesById(initialState, action);
@@ -70,8 +79,11 @@ describe('games reducer', () => {
 
     const action = {
       type: 'REMOVE_ENTRY',
-      id: 1,
-      game: 0
+      payload: {
+        id: 1,
+        game: 0
+      },
+      meta: {remote: true}
     }
 
     const nextState = gamesById(initialState, action);

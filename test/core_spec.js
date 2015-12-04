@@ -1,6 +1,7 @@
 import {expect} from 'chai';
 import {
   addItem,
+  updateItem,
   addReferenceItem,
   removeItem,
   removeReferenceItem,
@@ -14,7 +15,6 @@ describe('application logic', () => {
     it('adds the item to new map if does not exist', () => {
       const state = {};
       const action = {
-        type: 'ADD_GAME',
         id: 1,
         name: "Some Game"
       };
@@ -40,7 +40,6 @@ describe('application logic', () => {
       };
 
       const action = {
-        type: 'ADD_GAME',
         id: 3,
         name: "Third Game",
         entries: [1,2,3]
@@ -90,7 +89,6 @@ describe('application logic', () => {
       };
 
       const action = {
-        type: 'ADD_ENTRY',
         id: 1,
         name: "First Entry",
         game: 0
@@ -124,7 +122,6 @@ describe('application logic', () => {
       }
 
       const action = {
-        type: 'ADD_ENTRY',
         id: 3,
         name: 'Third Entry',
         game: 0
@@ -160,7 +157,6 @@ describe('application logic', () => {
       };
 
       const action = {
-        type: 'REMOVE_GAME',
         id: 1
       };
 
@@ -195,7 +191,6 @@ describe('application logic', () => {
       };
 
       const action = {
-        type: 'REMOVE_GAME',
         id: 0
       };
 
@@ -217,7 +212,6 @@ describe('application logic', () => {
       }
 
       const action = {
-        type: 'REMOVE_ENTRY',
         id: 2,
         game: 0
       }
@@ -250,7 +244,6 @@ describe('application logic', () => {
       };
 
       const action = {
-        type: 'REMOVE_ENTRY',
         id: 1,
         game: 0
       };
@@ -275,7 +268,6 @@ describe('application logic', () => {
       };
 
       const action = {
-        type: 'CHANGE_OR_REMOVE_ANSWER',
         id: 2,
         question: 0
       };
@@ -305,7 +297,6 @@ describe('application logic', () => {
       };
 
       const action = {
-        type: 'CHANGE_OR_REMOVE_ANSWER',
         id: 2,
         question: 0
       };
@@ -336,7 +327,6 @@ describe('application logic', () => {
       };
 
       const action = {
-        type: 'CHANGE_OR_REMOVE_ANSWER',
         id: 4,
         question: 0
       };
@@ -356,6 +346,31 @@ describe('application logic', () => {
       });
 
     })
+  });
+
+  describe('updateItem', () => {
+
+    it('adds value if not set', () => {
+      const initialState = {
+        0: {
+          id: 0
+        }
+      };
+
+      const action = {
+        id: 0,
+        title: "Sample title"
+      }
+
+      const nextState = updateItem(initalState, action);
+      expect(nextState).to.eql({
+        0: {
+          id: 0,
+          title: "Sample title"
+        }
+      })
+    });
+
   });
 
 });

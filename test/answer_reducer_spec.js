@@ -8,8 +8,11 @@ describe('answer reducer', () => {
     const initialState = {};
     const action = {
       type: 'ADD_ANSWER',
-      id: 0,
-      name: 'Sample Answer'
+      payload: {
+        id: 0,
+        name: 'Sample Answer'
+      },
+      meta: {remote: true}
     };
 
     const nextState = answersById(initialState, action);
@@ -30,7 +33,10 @@ describe('answer reducer', () => {
     };
     const action = {
       type: 'REMOVE_ANSWER',
-      id: 0
+      payload: {
+        id: 0
+      },
+      meta: {remote: true}
     }
 
     const nextState = answersById(initialState, action);

@@ -8,8 +8,11 @@ describe('entries reducer', () => {
     const initialState = {};
     const action = {
       type: 'ADD_ENTRY',
-      id: 0,
-      name: 'Sample Entry'
+      payload: {
+        id: 0,
+        name: 'Sample Entry'
+      },
+      meta: {remote: true}
     };
 
     const nextState = entriesById(initialState, action);
@@ -30,7 +33,10 @@ describe('entries reducer', () => {
     };
     const action = {
       type: 'REMOVE_ENTRY',
-      id: 0
+      payload: {
+        id: 0
+      },
+      meta: {remote: true}
     }
 
     const nextState = entriesById(initialState, action);
@@ -46,8 +52,11 @@ describe('entries reducer', () => {
     };
     const action = {
       type: 'ADD_QUESTION',
-      id: 1,
-      entry: 0
+      payload: {
+        id: 1,
+        entry: 0
+      },
+      meta: {remote: true}
     };
 
     const nextState = entriesById(initialState, action);
@@ -70,8 +79,11 @@ describe('entries reducer', () => {
 
     const action = {
       type: 'REMOVE_QUESTION',
-      id: 1,
-      entry: 0
+      payload: {
+        id: 1,
+        entry: 0
+      },
+      meta: {remote: true}
     }
 
     const nextState = entriesById(initialState, action);

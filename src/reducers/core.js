@@ -1,8 +1,5 @@
 export function addItem(state, action) {
-  const actionCopy = Object.assign({}, action);
-  //keep unwanted action type out of state
-  delete actionCopy.type;
-  return {...state, [action.id]: {...actionCopy}};
+  return {...state, [action.id]: {...action}};
 }
 
 export function addReferenceItem(state, action, actionKey, referenceName) {

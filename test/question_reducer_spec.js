@@ -8,8 +8,11 @@ describe('questions reducer', () => {
     const initialState = {};
     const action = {
       type: 'ADD_QUESTION',
-      id: 0,
-      name: 'Sample Question'
+      payload: {
+        id: 0,
+        name: 'Sample Question'
+      },
+      meta: {remote: true}
     };
 
     const nextState = questionsById(initialState, action);
@@ -30,7 +33,10 @@ describe('questions reducer', () => {
     };
     const action = {
       type: 'REMOVE_QUESTION',
-      id: 0
+      payload: {
+        id: 0
+      },
+      meta: {remote: true}
     }
 
     const nextState = questionsById(initialState, action);
@@ -46,8 +52,11 @@ describe('questions reducer', () => {
     };
     const action = {
       type: 'ADD_ANSWER',
-      id: 1,
-      question: 0
+      payload: {
+        id: 1,
+        question: 0
+      },
+      meta: {remote: true}
     };
 
     const nextState = questionsById(initialState, action);
@@ -70,8 +79,11 @@ describe('questions reducer', () => {
 
     const action = {
       type: 'REMOVE_ANSWER',
-      id: 1,
-      question: 0
+      payload: {
+        id: 1,
+        question: 0
+      },
+      meta: {remote: true}
     }
 
     const nextState = questionsById(initialState, action);
@@ -93,8 +105,11 @@ describe('questions reducer', () => {
 
     const action = {
       type: 'CHANGE_OR_REMOVE_ANSWER',
-      id: 2,
-      question: 0
+      payload: {
+        id: 2,
+        question: 0
+      },
+      meta: {remote: true}
     };
 
     const nextState = questionsById(initialState, action);
