@@ -1,5 +1,5 @@
 import {
-  addItem,
+  addOrUpdateItem,
   removeItem,
   addReferenceItem,
   removeReferenceItem,
@@ -9,7 +9,7 @@ import {
 const questionsById = (state = {}, action) => {
   switch(action.type) {
     case 'ADD_QUESTION': {
-      return addItem(state, action.payload);
+      return addOrUpdateItem(state, action.payload);
     }
     case 'REMOVE_QUESTION': {
       return removeItem(state, action.payload);

@@ -10,7 +10,6 @@ describe('games reducer', () => {
       type: 'ADD_GAME',
       payload: {
         id: 0,
-        title: 'Sample Game'
       },
       meta: {remote: true}
     };
@@ -19,7 +18,6 @@ describe('games reducer', () => {
     expect(nextState).to.eql({
       0: {
         id: 0,
-        title: 'Sample Game'
       }
     });
   });
@@ -41,6 +39,36 @@ describe('games reducer', () => {
 
     const nextState = gamesById(initialState, action);
     expect(nextState).to.eql({});
+  });
+
+  it('handles UPDATE_ATTRIBUTE', () => {
+    const initialState = {
+      0: {
+        id: 0
+      }
+    };
+
+    const action = {
+      type: 'UPDATE_ATTRIBUTE',
+      payload: {
+        id: 0,
+        title: "New Title"
+      },
+      meta: {remote: true}
+    }
+
+    const nextState = gamesById(initialState, action);
+    expect(nextState).to.eql({
+      0: {
+        id: 0,
+        title: "New Title"
+      }
+    });
+    expect(initialState).to.eql({
+      0: {
+        id: 0
+      }
+    });
   });
 
   it('handles ADD_ENTRY', () => {

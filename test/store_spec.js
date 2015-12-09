@@ -16,8 +16,11 @@ describe('store', () => {
 
     store.dispatch({
       type: 'ADD_GAME',
-      id: 0,
-      title: 'Sample'
+      payload: {
+        id: 0,
+        title: 'Sample'
+      },
+      meta: {remote: true}
     });
 
     expect(store.getState()).to.eq;({

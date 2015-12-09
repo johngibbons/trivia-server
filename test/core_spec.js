@@ -1,7 +1,6 @@
 import {expect} from 'chai';
 import {
-  addItem,
-  updateItem,
+  addOrUpdateItem,
   addReferenceItem,
   removeItem,
   removeReferenceItem,
@@ -10,7 +9,7 @@ import {
 
 describe('application logic', () => {
 
-  describe('addItem', () => {
+  describe('addOrUpdateItem', () => {
 
     it('adds the item to new map if does not exist', () => {
       const state = {};
@@ -18,7 +17,7 @@ describe('application logic', () => {
         id: 1,
         name: "Some Game"
       };
-      const nextState = addItem(state, action);
+      const nextState = addOrUpdateItem(state, action);
       expect(nextState).to.eql({
         1: {
           id: 1,
@@ -45,7 +44,7 @@ describe('application logic', () => {
         entries: [1,2,3]
       };
 
-      const nextState = addItem(state, action);
+      const nextState = addOrUpdateItem(state, action);
 
       expect(nextState).to.eql({
         0: {
@@ -74,6 +73,52 @@ describe('application logic', () => {
         }
       });
 
+    });
+
+
+    it('adds value if not set', () => {
+      const initialState = {
+        0: {
+          id: 0
+        }
+      };
+
+      const action = {
+        id: 0,
+        title: "Sample title"
+      };
+
+      const nextState = addOrUpdateItem(initialState, action);
+      expect(nextState).to.eql({
+        0: {
+          id: 0,
+          title: "Sample title"
+        }
+      });
+    });
+
+    it('changes updated value but not others', () => {
+      const initialState = {
+        0: {
+          id: 0,
+          title: "Initial",
+          editing: false
+        }
+      };
+
+      const action = {
+        id: 0,
+        title: "New Title"
+      };
+
+      const nextState = addOrUpdateItem(initialState, action);
+      expect(nextState).to.eql({
+        0: {
+          id: 0,
+          title: "New Title",
+          editing: false
+        }
+      });
     });
 
   });
@@ -348,29 +393,5 @@ describe('application logic', () => {
     })
   });
 
-  describe('updateItem', () => {
-
-    it('adds value if not set', () => {
-      const initialState = {
-        0: {
-          id: 0
-        }
-      };
-
-      const action = {
-        id: 0,
-        title: "Sample title"
-      }
-
-      const nextState = updateItem(initalState, action);
-      expect(nextState).to.eql({
-        0: {
-          id: 0,
-          title: "Sample title"
-        }
-      })
-    });
-
-  });
 
 });

@@ -1,5 +1,5 @@
-export function addItem(state, action) {
-  return {...state, [action.id]: {...action}};
+export function addOrUpdateItem(state, action) {
+  return {...state, [action.id]: {...state[action.id], ...action}};
 }
 
 export function addReferenceItem(state, action, actionKey, referenceName) {
