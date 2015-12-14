@@ -41,7 +41,7 @@ describe('games reducer', () => {
     expect(nextState).to.eql({});
   });
 
-  it('handles UPDATE_ATTRIBUTE', () => {
+  it('handles UPDATE_GAME_ATTRIBUTE', () => {
     const initialState = {
       0: {
         id: 0
@@ -49,7 +49,7 @@ describe('games reducer', () => {
     };
 
     const action = {
-      type: 'UPDATE_ATTRIBUTE',
+      type: 'UPDATE_GAME_ATTRIBUTE',
       payload: {
         id: 0,
         title: "New Title"

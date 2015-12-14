@@ -13,7 +13,7 @@ const gamesById = (state = {}, action) => {
     case 'REMOVE_GAME': {
       return removeItem(state, action.payload);
     }
-    case 'UPDATE_ATTRIBUTE': {
+    case 'UPDATE_GAME_ATTRIBUTE': {
       return addOrUpdateItem(state, action.payload);
     }
     case 'ADD_ENTRY': {

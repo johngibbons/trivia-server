@@ -43,6 +43,32 @@ describe('questions reducer', () => {
     expect(nextState).to.eql({});
   });
 
+  it('handles UPDATE_QUESTION_ATTRIBUTE', () => {
+    const initialState = {
+      0: {
+        id: 0,
+        text: "Sample Question"
+      }
+    };
+
+    const action = {
+      type: 'UPDATE_QUESTION_ATTRIBUTE',
+      payload: {
+        id: 0,
+        text: "Updated Question"
+      },
+      meta: {remote: true}
+    };
+
+    const nextState = questionsById(initialState, action);
+    expect(nextState).to.eql({
+      0: {
+        id: 0,
+        text: "Updated Question"
+      }
+    });
+  });
+
   it('handles ADD_ANSWER', () => {
     const initialState = {
       0: {

@@ -14,6 +14,9 @@ const questionsById = (state = {}, action) => {
     case 'REMOVE_QUESTION': {
       return removeItem(state, action.payload);
     }
+    case 'UPDATE_QUESTION_ATTRIBUTE': {
+      return addOrUpdateItem(state, action.payload);
+    }
     case 'ADD_ANSWER': {
       return addReferenceItem(state, action.payload, 'question', 'answers');
     }
