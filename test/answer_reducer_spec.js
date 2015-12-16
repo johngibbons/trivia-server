@@ -37,10 +37,36 @@ describe('answer reducer', () => {
         id: 0
       },
       meta: {remote: true}
-    }
+    };
 
     const nextState = answersById(initialState, action);
     expect(nextState).to.eql({});
   });
+
+  it('handles UPDATE_ANSWER_ATTRIBUTE', () => {
+    const initialState = {
+      0: {
+        id: 0,
+        text: 'answer text'
+      }
+    };
+
+    const action = {
+      type: 'UPDATE_ANSWER_ATTRIBUTE',
+      payload: {
+        id: 0,
+        text: 'new text'
+      },
+      meta: {remote: true}
+    };
+
+    const nextState = answersById(initialState, action);
+    expect(nextState).to.eql({
+      0: {
+        id: 0,
+        text: 'new text'
+      }
+    });
+  })
 
 });

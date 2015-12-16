@@ -6,6 +6,8 @@ const answersById = (state = {}, action) => {
       return addOrUpdateItem(state, action.payload);
     case 'REMOVE_ANSWER':
       return removeItem(state, action.payload);
+    case 'UPDATE_ANSWER_ATTRIBUTE':
+      return addOrUpdateItem(state, action.payload);
     default:
       return state;
   }
